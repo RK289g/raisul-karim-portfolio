@@ -46,7 +46,7 @@ export default function Awards() {
         <Grid gutter={24}>
           {AwardsData.map((a, idx) => (
             <Grid.Col key={`${a.title}-${idx}`} span={{ base: 12, sm: 6 }}>
-              <CoreAwardCard title={a.title} />
+              <CoreAwardCard title={a.title} subtitle={a.subtitle} />
             </Grid.Col>
           ))}
         </Grid>

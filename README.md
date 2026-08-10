@@ -6,7 +6,7 @@ The portfolio focuses on a clean visual system, reusable architecture, smooth an
 
 ---
 
-## ✨ Features
+## Features
 
 - Modern dark-themed developer portfolio
 - Fully responsive across desktop, tablet, and mobile

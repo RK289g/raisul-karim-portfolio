@@ -27,156 +27,140 @@ export default function ProjectCard({
   repoLabel = "View Details",
   image,
 }: ProjectItem) {
+  const hasLink = Boolean(repoUrl?.trim());
+
   return (
-    <Box style={{ perspective: 1200 }}>
-      <motion.div
-        whileHover={{ rotateY: 180 }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
+    <motion.div
+      whileHover={{ scale: 1.02, y: -4 }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
+      style={{ width: "100%", height: "100%" }}
+    >
+      <Box
         style={{
-          width: "100%",
+          height: "100%",
           minHeight: 260,
+          borderRadius: 18,
+          padding: 22,
+          border: "1px solid var(--mantine-color-grid-9)",
+          background:
+            "linear-gradient(180deg, var(--mantine-color-background-7) 0%, var(--mantine-color-background-8) 100%)",
+          boxShadow: "0 12px 36px var(--portfolio-shadow-sheet)",
+          display: "flex",
+          flexDirection: "column",
+          gap: 18,
+          overflow: "hidden",
           position: "relative",
-          transformStyle: "preserve-3d",
         }}
       >
-        {/* FRONT */}
         <Box
+          aria-hidden
           style={{
             position: "absolute",
             inset: 0,
-            borderRadius: 18,
-            padding: 18,
             background:
-              "linear-gradient(180deg, var(--mantine-color-background-7) 0%, var(--mantine-color-background-8) 100%)",
-            border: "1px solid var(--mantine-color-grid-9)",
-            boxShadow: "0 12px 36px var(--portfolio-shadow-sheet)",
-            backfaceVisibility: "hidden",
-            overflow: "hidden",
+              "radial-gradient(circle at top left, var(--portfolio-primary-radial-soft), transparent 55%)",
+            pointerEvents: "none",
           }}
-        >
-          <Flex gap={16} align="center" h="100%">
-            <Box
-              style={{
-                width: 92,
-                height: 92,
-                borderRadius: 14,
-                border: "1px solid var(--mantine-color-grid-9)",
-                background: "var(--mantine-color-background-7)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flex: "0 0 auto",
-                overflow: "hidden",
-              }}
-            >
-              {image ? (
-                <Image
-                  src={image}
-                  alt={title}
-                  width={92}
-                  height={92}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                  }}
-                />
-              ) : (
-                <IconFileText
-                  size={42}
-                  color="var(--portfolio-text-accent-soft)"
-                  stroke={1.6}
-                />
-              )}
-            </Box>
+        />
 
-            <Stack gap={8}>
-              {subtitle && (
-                <Text
-                  fw={700}
-                  fz={13}
-                  tt="uppercase"
-                  style={{ color: "var(--portfolio-text-accent-soft)" }}
-                >
-                  {subtitle}
-                </Text>
-              )}
+        <Flex gap={16} align="flex-start" wrap="nowrap" style={{ position: "relative" }}>
+          <Box
+            style={{
+              width: 72,
+              height: 72,
+              borderRadius: 14,
+              border: "1px solid var(--mantine-color-grid-9)",
+              background: "var(--mantine-color-background-7)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flex: "0 0 auto",
+              overflow: "hidden",
+            }}
+          >
+            {image ? (
+              <Image
+                src={image}
+                alt={title}
+                width={72}
+                height={72}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+              />
+            ) : (
+              <IconFileText
+                size={34}
+                color="var(--portfolio-text-accent-soft)"
+                stroke={1.6}
+              />
+            )}
+          </Box>
 
-              <Title
-                order={3}
-                fw={800}
-                lh={1.2}
-                style={{ color: "var(--portfolio-text-on-bg)" }}
-              >
-                {title}
-              </Title>
-            </Stack>
-          </Flex>
-        </Box>
-
-        {/* BACK */}
-        <Box
-          style={{
-            position: "absolute",
-            inset: 0,
-            borderRadius: 18,
-            padding: 20,
-            transform: "rotateY(180deg)",
-            backfaceVisibility: "hidden",
-            border: "1px solid var(--mantine-color-grid-9)",
-            background:
-              "linear-gradient(180deg, var(--mantine-color-background-7), var(--mantine-color-background-8))",
-            boxShadow: "0 12px 36px var(--portfolio-shadow-sheet)",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-          }}
-        >
-          <Stack gap={10}>
+          <Stack gap={6} style={{ flex: 1, minWidth: 0 }}>
             {subtitle && (
               <Text
                 fw={700}
-                fz={13}
+                fz={12}
                 tt="uppercase"
-                style={{ color: "var(--portfolio-text-accent-soft)" }}
+                style={{
+                  letterSpacing: "0.08em",
+                  color: "var(--portfolio-text-accent-soft)",
+                }}
               >
                 {subtitle}
               </Text>
             )}
 
             <Title
-              order={4}
+              order={3}
               fw={800}
               lh={1.25}
-              style={{ color: "var(--portfolio-text-on-bg)" }}
+              style={{
+                color: "var(--portfolio-text-on-bg)",
+                fontSize: "clamp(16px, 1.6vw, 20px)",
+                margin: 0,
+              }}
             >
               {title}
             </Title>
-
-            <Text fz={14} lh={1.55} style={{ color: "var(--portfolio-text-soft)" }}>
-              {description}
-            </Text>
           </Stack>
+        </Flex>
 
-          <Stack gap={14}>
-            <Flex gap={8} wrap="wrap">
-              {tech.map((t, i) => (
-                <Box
-                  key={i}
-                  style={{
-                    padding: "5px 10px",
-                    borderRadius: 999,
-                    border: "1px solid var(--mantine-color-grid-9)",
-                    fontSize: 11,
-                    color: "var(--portfolio-text-on-bg)",
-                    background: "var(--portfolio-chip-bg)",
-                  }}
-                >
-                  {t.label}
-                </Box>
-              ))}
-            </Flex>
+        <Text
+          fz={14}
+          lh={1.55}
+          style={{
+            color: "var(--portfolio-text-soft)",
+            position: "relative",
+            flex: 1,
+          }}
+        >
+          {description}
+        </Text>
 
+        <Stack gap={14} style={{ position: "relative", marginTop: "auto" }}>
+          <Flex gap={8} wrap="wrap">
+            {tech.map((t, i) => (
+              <Box
+                key={i}
+                style={{
+                  padding: "5px 10px",
+                  borderRadius: 999,
+                  border: "1px solid var(--mantine-color-grid-9)",
+                  fontSize: 11,
+                  color: "var(--portfolio-text-on-bg)",
+                  background: "var(--portfolio-chip-bg)",
+                }}
+              >
+                {t.label}
+              </Box>
+            ))}
+          </Flex>
+
+          {hasLink && (
             <Anchor
               href={repoUrl}
               target="_blank"
@@ -187,14 +171,15 @@ export default function ProjectCard({
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 6,
+                width: "fit-content",
               }}
             >
               {repoLabel}
               <IconArrowUpRight size={16} />
             </Anchor>
-          </Stack>
-        </Box>
-      </motion.div>
-    </Box>
+          )}
+        </Stack>
+      </Box>
+    </motion.div>
   );
 }

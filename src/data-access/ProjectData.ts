@@ -3,6 +3,21 @@ import projectImg from "@/../public/assets/images/image1.png";
 
 export const ProjectData = [
   {
+    title: "Orvixo — AI Dashboard Solution",
+    subtitle: " Product",
+    description:
+      "Built responsive dashboard UI, reports, charts, and AI-powered SaaS features using modern full-stack technologies.",
+    tech: [
+      { label: "Next.js" },
+      { label: "FASTAPI" },
+      { label: "OpenAI" },
+      { label: "AI-powered SaaS" },
+    ] as const,
+    repoUrl: "https://orvixo.com",
+    repoLabel: "Visit Site",
+    image: projectImg,
+  },
+  {
     title:
       "KYC-Driven Cryptocurrency Wallet: A Solution to Regulatory Compliance",
     subtitle: "Conference Paper — ICCIT 2024",
@@ -58,6 +73,25 @@ export const ProjectData = [
     ] as const,
     repoUrl: "https://doi.org/10.1109/ICCIT64611.2024.11022389",
     repoLabel: "Related Paper",
+    image: projectImg,
+  },
+  {title: "DishDiscover",
+
+    subtitle: "Personal Project",
+    
+    description:
+      "Designed and developed a recipe discovery platform for exploring dishes and finding cooking inspiration.",
+    
+    tech: [
+      { label: "Web Development" },
+      { label: "Responsive Design" },
+      { label: "Recipe Discovery" },
+    ] as const,
+    
+    repoUrl: "https://dishdiscover-main.netlify.app/",
+    
+    repoLabel: "Visit Site",
+    
     image: projectImg,
   },
 ] satisfies readonly ProjectItem[];

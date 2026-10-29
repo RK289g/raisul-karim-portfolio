@@ -126,10 +126,10 @@ export default function HeroSection() {
                 lineHeight: 1.65,
               }}
             >
-              Hi! I am Saju, a Computer Science graduate with research experience
-              in blockchain and cryptography and professional experience in web
-              development. Interested in scalable systems and AI-driven
-              platforms.
+              Hi! I am Raisul, a Computer Science graduate with research
+              experience in blockchain and cryptography and professional
+              experience in web development. Interested in scalable systems and
+              AI-driven platforms.
             </Text>
 
             <Box pt={40}>
